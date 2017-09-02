@@ -21,7 +21,7 @@ guides on [Introduction to Linux Concepts](https://www.linode.com/docs/tools-ref
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of the Guide's [Securing Your Server](/docs/security/securing-your-server) section to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for a tinc server.
 
-3.  Obtain a client system (laptop or computer) with a fedora 26 workstation installed.  Our client system will be called **carbon**.
+3.  Obtain a client system (laptop or computer) with fedora 26 workstation OS installed.  Our client system will be called **carbon**.
 
 {: .note}
 > The real world IP addresses we will use are completely made up.  They are provided to give you a reference for the configruation files.  Do not use them for your own server or client. 
