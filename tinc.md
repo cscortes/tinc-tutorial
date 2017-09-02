@@ -29,11 +29,8 @@ guides on [Introduction to Linux Concepts](https://www.linode.com/docs/tools-ref
 Please replace 11.22.33.10/8 with the real world ip address of your Linode server.  Also, replace 11.22.33.12/8 with the real world ip address of your wireless router.  
 
 {: .note}
-> The assumption for your real world IP address for your wireless router is that you have a static IP address.  Otherwise, you need to find out what has been assigned to it by a dhcp server everytime and reconfigure your tinc host file on your Linode server.
+> The assumption for your real world IP address for your wireless router is that you have a static IP address.  Otherwise, you need to find out what has been assigned to your client machine by a dhcp server everytime and reconfigure your tinc host file on your Linode server.
 
-------
-What is "it"? Is "it" the real world address? Please clarify.
-------
 
 ##The Target Scenario
 
@@ -48,11 +45,7 @@ Our aim is to setup tinc on our linode server in the cloud and then make at leas
 
 ### Install Package Dependencies
 
-1.  Log into your server machine.  Then make sure you are up to date:
-
-------
-"up to date" on what?? Your order of cookies for next months get together?
-------
+1.  Log into your server machine.  Then make sure your fedora 26 OS is up to date:
 
         sudo dnf update
 
@@ -263,19 +256,16 @@ This is a complex setup.  You are doing something that should be done with a lit
 
 ## Permanently Adding a Tinc Service
 
-1. Creating a service file is always kind of tricky if your package doesn't come with one built in. 
 
-2. Once you are satified with your tinc server machine.  You can make it a permanent service with the following commands:
+1. Once you are satified with your tinc server machine.  You can make it a permanent service with the following commands:
 
-        systemctl enable tinc@myvpn
+        sudo systemctl enable tinc@myvpn
 
-3.  ....
+2. On linode though, there is one change you have to make, move the service file from the tinc.service.wants directory to the multi-user.target.wants directory.
 
+        sudo mv /etc/systemd/system/tinc.service.wants/tinc@myvpn.service /etc/systemd/system/multi-user.target.wants
 
-
-
-
-
+3.  Reboot your server and your new service should be up and running!
 
 
 
