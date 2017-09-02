@@ -2,7 +2,7 @@
 # Setting up Tinc VPN on Linode
 
 
-## What is Tinc
+## What is Tinc?
 
 According to Tinc's own documentation:
 
