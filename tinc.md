@@ -1,27 +1,6 @@
 
 # Setting up Tinc VPN on Linode
 
----
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Tinc server installation and configuration guide.'
-keywords: 'VPN, Tinc, Server, Client'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, Aug 29th, 2017'
-modified: Wednesday, Aug 29th, 2017
-modified_by:
-  name: Linode
-title: 'Setting up Tinc VPN on Linode'
-contributor:
-  name: Luis Cortés
-  link: cscortes @ Github
-  external_resources:
-- '[Tinc Documentation](https://www.tinc-vpn.org/docs/)'
----
-
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
-----
 
 ## What is Tinc
 
