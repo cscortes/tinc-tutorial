@@ -9,7 +9,7 @@ According to Tinc's own documentation:
 
 >tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. tinc is Free Software and licensed under the GNU General Public License version 2 or later. Because the VPN appears to the IP level network code as a normal network device, there is no need to adapt any existing software. This allows VPN sites to share information with each other over the Internet without exposing any information to others. 
 
-Of course, to install the latest software version of tinc, one can pull the source code from their [download page](https://www.tinc-vpn.org/download/). An easier way may be provided by your operating system.  For this example, we will use Fedora 26 and use the built-in installer to grab the necessary tinc binaries.
+Of course, to install the latest software version of tinc, one can pull the source code from their [download page](https://www.tinc-vpn.org/download/). An easier way may be provided by your operating system.  For this example, we will use Fedora 30 and use the built-in installer to grab the necessary tinc binaries.
 
 
 Since system administration will be part of this installation, referencing 
@@ -22,7 +22,7 @@ guides on [Introduction to Linux Concepts](https://www.linode.com/docs/tools-ref
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of the Guide's [Securing Your Server](/docs/security/securing-your-server) section to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for a tinc server.
 
-3.  Obtain a client system (laptop or computer) with fedora 26 workstation OS installed.  Our client system will be called **carbon**.
+3.  Obtain a client system (laptop or computer) with fedora 30 workstation OS installed.  Our client system will be called **carbon**.
 
 > The real world IP addresses we will use are completely made up.  They are provided to give you a reference for the configruation files.  Do not use them for your own server or client. 
  
@@ -34,7 +34,7 @@ Please replace 11.22.33.10/8 with the real world ip address of your Linode serve
 ## The Target Scenario
 
 
-Our aim is to setup tinc on our linode server in the cloud and then make at least one vpn connection using tinc on a fedora 26 client. To add a little bit of complexity, our client using tinc is behind a wireless router.  The wireless router should be able to obtain a real world ip address from the Internet and our client is assigned a NAT address from our wireless router.  This configuration would approximate a real world scenario.
+Our aim is to setup tinc on our linode server in the cloud and then make at least one vpn connection using tinc on a fedora 30 client. To add a little bit of complexity, our client using tinc is behind a wireless router.  The wireless router should be able to obtain a real world ip address from the Internet and our client is assigned a NAT address from our wireless router.  This configuration would approximate a real world scenario.
 
 ![scenario network layout](tinclayout.png)
 
