@@ -65,12 +65,16 @@ Our aim is to setup tinc on our linode server in the cloud and then make at leas
 
         sudo cat > /etc/tinc/myvpn/tinc-down 
         #!/bin/sh
-        ifconfig $INTERFACE down
+		ip route del 192.168.11.0/24 dev $INTERFACE
+		ip add del 192.168.11.1 dev $INTERFACE
+		ip link set $INTERFACE down
         CNTL-Z
 
         sudo cat > /etc/tinc/myvpn/tinc-up
         #!/bin/sh 
-        ifconfig $INTERFACE 192.168.11.1 netmask 255.255.255.0
+		ip link set $INTERFACE up
+		ip addr add 192.168.1.1 dev $INTERFACE
+		ip route add 192.168.11.0/24 dev $INTERFACE
         CNTL-Z
 
 3. After you have created these files, make sure the permissions are correctly set for the execution of these 2 files:
@@ -82,6 +86,8 @@ Our aim is to setup tinc on our linode server in the cloud and then make at leas
         sudo cat > /etc/tinc/myvpn/tinc.conf
         Name = oxygen
         Device = /dev/net/tun
+		AddressFamily = 4
+		Mode = switch
         CNTL-Z
 
 5. Set the hostname of your server.  This is normally not necessary as Linode provides you with a name.  Although, that name is not as memorable as one you give it yourself.
@@ -130,12 +136,16 @@ It will add your public key to your oxygen host file, which we will need to tran
 
         sudo cat > /etc/tinc/myvpn/tinc-down 
         #!/bin/sh
-        ifconfig $INTERFACE down
+		ip route del 192.168.11.0/24 dev $INTERFACE
+		ip addr del 192.168.11.2 dev $INTERFACE
+		ip link set $INTERFACE down
         CNTL-Z
 
         sudo cat > /etc/tinc/myvpn/tinc-up
         #!/bin/sh 
-        ifconfig $INTERFACE 192.168.11.2 netmask 255.255.255.0
+		ip link set $INTERFACE up 
+		ip addr add 192.168.11.2 dev $INTERFACE
+		ip route add 192.168.11.0/24 dev $INTERFACE
         CNTL-Z
 
 3. After you have created these files, make sure the permissions are correctly set for execution of these 2 files:
@@ -148,6 +158,8 @@ It will add your public key to your oxygen host file, which we will need to tran
         Name = carbon
         ConnectTo = oxygen
         Device = /dev/net/tun
+		AddressFamily = ipv4
+		Mode = switch
         CNTL-Z
 
 5. Set the hostname of your client, but add the real world IP address of the server to the hosts file.
