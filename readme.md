@@ -2,11 +2,12 @@
 # Setting up Tinc VPN on Linode
 
 
+
 ## What is Tinc?
 
 According to Tinc's own documentation:
 
-  > tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. tinc is Free Software and licensed under the GNU General Public License version 2 or later. Because the VPN appears to the IP level network code as a normal network device, there is no need to adapt any existing software. This allows VPN sites to share information with each other over the Internet without exposing any information to others. 
+>tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet. tinc is Free Software and licensed under the GNU General Public License version 2 or later. Because the VPN appears to the IP level network code as a normal network device, there is no need to adapt any existing software. This allows VPN sites to share information with each other over the Internet without exposing any information to others. 
 
 Of course, to install the latest software version of tinc, one can pull the source code from their [download page](https://www.tinc-vpn.org/download/). An easier way may be provided by your operating system.  For this example, we will use Fedora 26 and use the built-in installer to grab the necessary tinc binaries.
 
@@ -23,16 +24,14 @@ guides on [Introduction to Linux Concepts](https://www.linode.com/docs/tools-ref
 
 3.  Obtain a client system (laptop or computer) with fedora 26 workstation OS installed.  Our client system will be called **carbon**.
 
-{: .note}
 > The real world IP addresses we will use are completely made up.  They are provided to give you a reference for the configruation files.  Do not use them for your own server or client. 
  
 Please replace 11.22.33.10/8 with the real world ip address of your Linode server.  Also, replace 11.22.33.12/8 with the real world ip address of your wireless router.  
 
-{: .note}
 > The assumption for your real world IP address for your wireless router is that you have a static IP address.  Otherwise, you need to find out what has been assigned to your client machine by a dhcp server everytime and reconfigure your tinc host file on your Linode server.
 
 
-##The Target Scenario
+## The Target Scenario
 
 
 Our aim is to setup tinc on our linode server in the cloud and then make at least one vpn connection using tinc on a fedora 26 client. To add a little bit of complexity, our client using tinc is behind a wireless router.  The wireless router should be able to obtain a real world ip address from the Internet and our client is assigned a NAT address from our wireless router.  This configuration would approximate a real world scenario.
@@ -106,10 +105,9 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         Port = 655
         CNTL-Z
 
-{:  .note}
-> The subnet ip should match the one you set in your tinc-up file.  If you change one, you need to change the other.
+>The subnet ip should match the one you set in your tinc-up file.  If you change one, you need to change the other.
 
-8.  Create public and private keys for your server.  Tinc makes this easy with the following command:
+1.  Create public and private keys for your server.  Tinc makes this easy with the following command:
 
         sudo tincd -n myvpn -K
 
