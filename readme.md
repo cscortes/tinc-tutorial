@@ -115,8 +115,8 @@ It will add your public key to your oxygen host file, which we will need to tran
 
 9. Add firewall rules to let the client connect to this server. 
 
-    sudo firewall-cmd --add-service=tinc
-    sudo firewall-cmd --permanent --add-service=tinc
+		sudo firewall-cmd --add-service=tinc
+		sudo firewall-cmd --permanent --add-service=tinc
 
 
 ### Configuration Files for Client
@@ -135,7 +135,7 @@ It will add your public key to your oxygen host file, which we will need to tran
 
         sudo cat > /etc/tinc/myvpn/tinc-up
         #!/bin/sh 
-        ifconfig $INTERFACE **192.168.11.2** netmask 255.255.255.0
+        ifconfig $INTERFACE 192.168.11.2 netmask 255.255.255.0
         CNTL-Z
 
 3. After you have created these files, make sure the permissions are correctly set for execution of these 2 files:
@@ -168,21 +168,20 @@ It will add your public key to your oxygen host file, which we will need to tran
         Port = 655
         CNTL-Z
 
-{: .note}
 > The subnet ip should match the one you set in 
 your tinc-up file.  If you change one, you need to change the other.
 
-8.  Create public and private keys for your client machine.  Tinc makes this easy with the following command:
+1.  Create public and private keys for your client machine.  Tinc makes this easy with the following command:
 
         sudo tincd -n myvpn -K
 
     It will add your public key to your carbon host file, which we will need to transfer at a later time to the server machine.
 
 
-9. Add firewall rules to let the server connect to this client. 
+2. Add firewall rules to let the server connect to this client. 
 
-    sudo firewall-cmd --add-service=tinc
-    sudo firewall-cmd --permanent --add-service=tinc
+		sudo firewall-cmd --add-service=tinc
+		sudo firewall-cmd --permanent --add-service=tinc
     
 
 ## Exchange Public Keys Via Host Files
@@ -192,13 +191,11 @@ your tinc-up file.  If you change one, you need to change the other.
 
     This can be accomplished by using scp to copy the server's host file down to the client.
 
-
-
-        sudo scp oxygen:/etc/tinc/myvpn/host/oxygen /etc/tinc/myvpn/host
+        sudo scp oxygen:/etc/tinc/myvpn/hosts/oxygen /etc/tinc/myvpn/hosts
 
     And the client's up to the server.
 
-        sudo scp /etc/tinc/myvpn/host/carbon  oxygen:/etc/tinc/myvpn/host/
+        sudo scp /etc/tinc/myvpn/hosts/carbon  oxygen:/etc/tinc/myvpn/hosts/
 
     
     ## The Wireless Router Configuration
